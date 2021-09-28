@@ -1,0 +1,49 @@
+# ++++++++++++++++++++++++++++++++++++++
+## Paired t-tests test_control
+# ++++++++++++++++++++++++++++++++++++++
+t.test(Fidelity2$iTHRIVE_BL, Fidelity2$iTHRIVE_FU, paired=T)
+t.test(Fidelity2$Control_BL, Fidelity2$Control_FU, paired=T)
+
+
+# ++++++++++++++++++++++++++++++++++++++
+## Paired t-tests sites
+# ++++++++++++++++++++++++++++++++++++++
+
+t.test(Fidelity1$CambPeter_BL_iTHR, Fidelity1$CambPeter_FU_iTHR,  paired=T)
+
+t.test(Fidelity1$Camden_BL_iTHR, Fidelity1$Camden_FU_iTHR, paired=T)
+
+t.test(Fidelity1$Herts_BL_iTHR, Fidelity1$Herts_FU_iTHR, paired=T)
+
+t.test(Fidelity1$Luton_BL_iTHR, Fidelity1$Luton_FU_iTHR, paired=T)
+
+t.test(Fidelity1$MancSal_BL_iTHR, Fidelity1$MancSal_FU_iTHR, paired=T)
+
+t.test(Fidelity1$Stockport_BL_iTHR, Fidelity1$Stockport_FU_iTHR, paired=T)
+
+t.test(Fidelity1$TowerHam_BL_iTHR, Fidelity1$TowerHam_FU_iTHR, paired=T)
+
+t.test(Fidelity1$WalthamF_BL_iTHR, Fidelity1$WalthamF_FU_iTHR, paired=T)
+
+t.test(Fidelity1$Warrington_BL_iTHR, Fidelity1$Warrington_FU_iTHR, paired=T)
+
+t.test(Fidelity1$Bradford_BL_Ctrl, Fidelity1$Bradford_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$EastSuff_BL_Ctrl, Fidelity1$EastSuff_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$Lewisham_BL_Ctrl, Fidelity1$Lewisham_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$NeneCorby_BL_Ctrl, Fidelity1$NeneCorby_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$Norfolk_BL_Ctrl, Fidelity1$Norfolk_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$Portsmouth_BL_Ctrl, Fidelity1$Portsmouth_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$SouthHam_BL_Ctrl, Fidelity1$SouthHam_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$Sunderland_BL_Ctrl, Fidelity1$Sunderland_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$Worcester_BL_Ctrl, Fidelity1$Worcester_FU_Ctrl, paired=T)
+
+t.test(Fidelity1$Stoke_BL_Ctrl, Fidelity1$Stoke_FU_Ctrl, paired=T)
+       
