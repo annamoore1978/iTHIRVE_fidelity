@@ -3,12 +3,25 @@
 # ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 install.packages('irr')
 install.packages("ggplot2")
+install.packages("pastecs")
+install.packages("psych")
+install.packages("car")
+install.packages("ggpubr")
+install.packages("RColorBrewer")
+
 library(readxl)
 library(tidyverse)
 library(irr)
 library(dplyr)
 library(ggpubr)
 library(rstatix)
+library(ggplot2)
+library(pastecs)
+library(psych)
+library(car)
+library(ggpubr)
+library("RColorBrewer")
+packageVersion("ggplot2")
 
 fidelity <- read_excel("~/Documents/Anna Work/Data/iTHRIVE/data/Fidelity_long_v1.xlsx") #imports data
 View(fidelity) #viewing data
@@ -19,6 +32,8 @@ View(fidelity) #viewing data
 
 Fidelity1 <- fidelity %>% 
   rename(Bexley_BL_iTHR = Ollie_Bexley_BL) %>%
+  rename(Stockport_FU_iTHR = Ollie_Stockport_FU) %>%
+  rename(NeneCorby_FU_Ctrl = Ollie_NeneCorby_FU) %>%
 rowwise() %>% 
   mutate(Bexley_FU_iTHR = mean(c(Kate_Bexley_FU,
                             Ollie_Anna_Bexley_FU))) %>%
@@ -44,8 +59,6 @@ rowwise() %>%
                              Ollie_MancSal_FU))) %>%
   mutate(Stockport_BL_iTHR = mean(c(Anna_Stockport_BL, 
                                Ollie_Stockport_BL))) %>%
-  mutate(Stockport_FU_iTHR = mean(c(Anna_Stockport_FU,
-                               Ollie_Stockport_FU))) %>%
   mutate(TowerHam_BL_iTHR = mean(c(Lida_TowerHamlets_BL, 
                               Niran_TowerHamlets_BL))) %>%
   mutate(TowerHam_FU_iTHR = mean(c(Ollie_TowerHamlets_FU, 
@@ -72,8 +85,6 @@ rowwise() %>%
                               Lida_Lewisham_FU))) %>%
   mutate(NeneCorby_BL_Ctrl = mean(c(Anna_NeneCorby_BL,
                                Ollie_NeneCorby_BL))) %>%
-  mutate(NeneCorby_FU_Ctrl = mean(c(Anna_NeneCorby_FU, Kate_NeneCorby_FU,
-                               Ollie_NeneCorby_FU))) %>%
   mutate(Norfolk_BL_Ctrl = mean(c(Lida_Norfolk_BL,
                              Niran_Norfolk_BL))) %>%
   mutate(Norfolk_FU_Ctrl = mean(c(Ollie_Norfolk_FU,
@@ -109,3 +120,26 @@ select(Rater, Level, Bexley_BL_iTHR, Bexley_FU_iTHR, CambPeter_BL_iTHR,
        Stoke_BL_Ctrl, Stoke_FU_Ctrl, Sunderland_BL_Ctrl, Sunderland_FU_Ctrl, 
        Worcester_BL_Ctrl, Worcester_FU_Ctrl)
 view(Fidelity1)
+
+# Averages test_control
+Fidelity2 <- Fidelity1 %>% 
+  rowwise() %>% 
+  mutate(iTHRIVE_BL = mean(c( Bexley_BL_iTHR,CambPeter_BL_iTHR, Herts_BL_iTHR, Camden_BL_iTHR,
+                            Luton_BL_iTHR, MancSal_BL_iTHR, 
+                            Stockport_BL_iTHR, TowerHam_BL_iTHR,
+                            WalthamF_BL_iTHR, Warrington_BL_iTHR))) %>%
+  mutate(iTHRIVE_FU = mean(c(CambPeter_FU_iTHR, Herts_FU_iTHR, Camden_FU_iTHR, 
+                             Luton_FU_iTHR, MancSal_FU_iTHR, Stockport_FU_iTHR, 
+                             TowerHam_FU_iTHR, WalthamF_FU_iTHR, 
+                             Warrington_FU_iTHR))) %>%
+  mutate(Control_BL = mean(c(Bradford_BL_Ctrl, EastSuff_BL_Ctrl, 
+                             Lewisham_BL_Ctrl, NeneCorby_BL_Ctrl, 
+                             Norfolk_BL_Ctrl, Portsmouth_BL_Ctrl, 
+                             SouthHam_BL_Ctrl, Sunderland_BL_Ctrl, 
+                             Worcester_BL_Ctrl))) %>%
+  mutate(Control_FU =mean(c(Bradford_FU_Ctrl, EastSuff_FU_Ctrl, Lewisham_FU_Ctrl,
+                            Norfolk_FU_Ctrl, Portsmouth_FU_Ctrl, 
+                            SouthHam_FU_Ctrl, Sunderland_FU_Ctrl, 
+                            Worcester_FU_Ctrl, Stoke_FU_Ctrl))) %>%
+  select(Rater, Level, iTHRIVE_BL, iTHRIVE_FU, Control_BL, Control_FU)
+view(Fidelity2)
